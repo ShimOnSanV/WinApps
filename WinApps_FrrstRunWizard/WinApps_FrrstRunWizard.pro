@@ -13,6 +13,7 @@ SOURCES += \
     wizardmainwindow.cpp
 
 HEADERS += \
+    InstalationStateEnum.hpp \
     mainwindow.hpp
 
 FORMS += \
