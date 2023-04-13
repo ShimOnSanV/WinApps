@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QStateMachine>
+#include <QGuiApplication>
+#include <QScreen>
+#include <iostream>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class WizardMainWindow; }
@@ -18,6 +21,6 @@ public:
 
 private:
     Ui::WizardMainWindow *ui;
-    QStateMachine * machine;
+    QStateMachine * m_stateMachine;
 };
 #endif // WIZARDMAINWINDOW_HPP

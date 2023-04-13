@@ -1,5 +1,6 @@
 #include "mainwindow.hpp"
 
+#include <iostream>
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
