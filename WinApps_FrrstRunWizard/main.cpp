@@ -1,9 +1,10 @@
-#include "mainwindow.hpp"
-
 #include <iostream>
+
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+
+#include "mainwindow.hpp"
 
 int main(int argc, char *argv[])
 {

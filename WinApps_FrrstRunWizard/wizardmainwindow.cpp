@@ -31,10 +31,42 @@ WizardMainWindow::WizardMainWindow(QWidget *parent)
 
 
     m_stateMachine = new QStateMachine;
+
+    state1 = new QState;
+    state1->assignProperty(ui->TheStartButton, "geometry", QRect(0, 0, 100, 30));
+   // state2->assignProperty(ui->TheStartButton, "geometry", QRect(0, 0, 100, 30));
+   /// m_stateMachine->addState(state1);
+  //  m_stateMachine->addState(state2);
+    m_stateMachine->setInitialState(state1);
+    m_stateMachine->start();
+    this->setTheState(EInstalationStates::IntroductionView);
 }
 
 WizardMainWindow::~WizardMainWindow()
 {
     delete ui;
 }
+void WizardMainWindow::on_TheStartButton_clicked()
+{
 
+}
+void WizardMainWindow::on_stopInstalation_clicked()
+{
+    this->close();
+}
+void WizardMainWindow::setTheState(const EInstalationStates & _instalationState)
+{
+    switch(_instalationState)
+    {
+        case 0:
+
+        break;
+        case 1:
+
+        break;
+        case 2:
+
+        break;
+    }
+    m_currentStateName = _instalationState;
+}
