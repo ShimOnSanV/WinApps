@@ -1,6 +1,6 @@
 #include "mainwindow.hpp"
 #include "ui_wizardmainwindow.h"
-#include <ostream>
+
 
 WizardMainWindow::WizardMainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -30,18 +30,10 @@ WizardMainWindow::WizardMainWindow(QWidget *parent)
     //QGuiApplication::primaryScreen() // set at the center of screen (what if there a more than one screen?_
 
 
-    m_stateMachine = new QStateMachine;
 
-    state1 = new QState;
-    state1->assignProperty(ui->TheStartButton, "geometry", QRect(0, 0, 100, 30));
-   // state2->assignProperty(ui->TheStartButton, "geometry", QRect(0, 0, 100, 30));
-   /// m_stateMachine->addState(state1);
-  //  m_stateMachine->addState(state2);
-    m_stateMachine->setInitialState(state1);
-    m_stateMachine->start();
-    this->setTheState(EInstalationStates::IntroductionView);
+
+    this->describeTheStates();
 }
-
 WizardMainWindow::~WizardMainWindow()
 {
     delete ui;
@@ -69,4 +61,18 @@ void WizardMainWindow::setTheState(const EInstalationStates & _instalationState)
         break;
     }
     m_currentStateName = _instalationState;
+}
+void WizardMainWindow::describeTheStates()
+{
+    m_stateMachine = new QStateMachine;
+    QState * tmpState = new QState;
+    tmpState->assignProperty(ui->TheStartButton, "geometry", QRect(0, 0, 100, 30));
+    // state2->assignProperty(ui->TheStartButton, "geometry", QRect(0, 0, 100, 30));
+    /// m_stateMachine->addState(state1);
+    //  m_stateMachine->addState(state2);
+    m_statesList.push_back( QState(tmpState) );
+
+    m_stateMachine->setInitialState(tmpState);
+    m_stateMachine->start();
+    this->setTheState(EInstalationStates::IntroductionView);
 }

@@ -9,7 +9,7 @@
 #include <QGuiApplication>
 #include <QScreen>
 
-#include <list>
+#include <vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class WizardMainWindow; }
@@ -28,14 +28,14 @@ private slots:
     void on_TheStartButton_clicked();
 
     void on_stopInstalation_clicked();
-
 private:
     Ui::WizardMainWindow *ui;
     QStateMachine * m_stateMachine;
     EInstalationStates m_currentStateName;
-    std::list<QState*> m_statesList;
-
+    std::vector<QState> m_statesList;
     void setTheState(const EInstalationStates & _instalationState);
-    QState * state1;
+    void describeTheStates();
+
 };
+
 #endif // WIZARDMAINWINDOW_HPP
